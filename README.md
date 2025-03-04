@@ -8,7 +8,23 @@ classoption:
 - aspectratio=169
 ---
 
+# Note
+
+This README.md file will render slightly different on
+[github.com](https://github.com/nylander/md2pdf) compared to the output from using
+the scripts in this repository ([`md2pdf`](md2pdf) or [`md2beamer`](md2beamer)).
+
+Normally, one would design the markdown text specifically for the final
+target media, but the examples given here are pretty portable. See further
+[here](https://pandoc.org/chunkedhtml-demo/8.22-markdown-variants.html).
+
+Take-home note: You can mix markdown, html, and tex!
+
+---
+
 # Prerequisites
+
+On a Debian-based system:
 
     $ apt install pandoc texlive-xetex
 
@@ -71,7 +87,7 @@ Huge text
 - Bullet item
 - Bullet item
 
-- [ ] Checklist item
+- [X] Checklist item
 - [ ] Checklist item
 
 ---
@@ -87,13 +103,16 @@ Huge text
 
 # Insert image
 
-![Figure text.](img/the_general_problem.png){width=70%}
+![Figure caption](img/the_general_problem.png){width=70%}\
 
 ---
 
 # Another way of inserting and images, and a code block
 
-Displayed as a code block:
+The image above was inserted using the following syntax (here displayed as **inline code**):
+`![Figure caption](img/the_general_problem.png){width=70%}\`
+
+One alternative is to use this text in the markdown file (displayed as a **code block**):
 
 ```latex
 \begin{figure}
@@ -102,9 +121,6 @@ Displayed as a code block:
    \end{center}
 \end{figure}
 ```
-
-The other way of inserting the image was done by (here displayed as inline code):
-`![Figure text.](img/the_general_problem.png){width=60%}`
 
 ---
 
@@ -118,7 +134,8 @@ The other way of inserting the image was done by (here displayed as inline code)
 
 - [pandoc](https://pandoc.org)
 - [xetex](https://tug.org/xetex)
-- [markdown syntax (github flavored)](https://github.github.com/gfm)
+- [markdown syntax (pandoc)](https://pandoc.org/chunkedhtml-demo/8-pandocs-markdown.html)
+- [markdown syntax (github)](https://github.github.com/gfm)
 - [markdownguide.org](https://www.markdownguide.org)
 - [xkcd](https://xkcd.com)
 
