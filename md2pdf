@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Convert Markdown to PDF using pandoc
+# Last modified: tis mar 04, 2025  04:29
+# Johan.Nylander\@nrm.se
+
+hash pandoc 2>/dev/null || { echo >&2 "Cannot find pandoc. Aborting."; exit 1; }
+
+for f in "$@"
+do
+  echo -n "Converting ${f} ..."
+  g=${f%.md}.pdf
+  pandoc --wrap=auto \
+      --pdf-engine=xelatex \
+      -V 'mainfont:DejaVuSerif' \
+      -V 'mainfontoptions:Extension=.ttf, UprightFont=*, BoldFont=*-Bold, ItalicFont=*-Italic, BoldItalicFont=*-BoldItalic' \
+      -V 'sansfont:DejaVuSans.ttf' \
+      -V 'monofont:DejaVuSansMono.ttf' \
+      -V 'mathfont:texgyredejavu-math.otf' \
+      --columns=180 -V geometry:margin=1in "$f" -o "$g"
+  if [ -e "$g" ]; then
+    echo " to ${g}"
+  fi
+done

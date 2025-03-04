@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Convert Markdown to PDF (beamer) using pandoc
+# Last modified: tis mar 04, 2025  04:28
+# Johan.Nylander\@nrm.se
+
+for f in "$@"
+do
+  echo -n "Converting $f ..."
+  g=${f%.md}.pdf
+  pandoc \
+      --pdf-engine=xelatex \
+      -f markdown-implicit_figures \
+      --highlight-style zenburn \
+      --to=beamer \
+      --output="$g"  \
+      "$f"
+  if [ -e "$g" ]; then
+    echo " to beamer ${g}"
+  fi
+done
